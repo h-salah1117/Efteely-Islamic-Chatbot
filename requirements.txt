@@ -1,7 +1,19 @@
+# Web Framework
 Flask==3.0.0
+
+# Data Manipulation
 pandas==2.1.4
 numpy==1.26.2
+
+# Machine Learning & NLP
 torch==2.1.2
 sentence-transformers==2.2.2
 scikit-learn==1.3.2
+transformers==4.36.2
 
+# Web Scraping (للأكواد اللي في مجلد notebooks)
+requests==2.31.0
+beautifulsoup4==4.12.2
+
+# Utilities
+tqdm==4.66.1
