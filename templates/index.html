@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efteely أفتيلي - الإجابة على الأسئلة الشرعية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a4d2e 0%, #0d6b3f 25%, #0f8a4f 50%, #0d6b3f 75%, #0a4d2e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            padding: 20px;
+            direction: rtl;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0d6b3f 0%, #0f8a4f 50%, #11a85f 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: slide 20s linear infinite;
+            opacity: 0.3;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .header h1 {
+            font-size: 3.2em;
+            font-weight: 900;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            font-size: 1.15em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .question-section {
+            margin-bottom: 35px;
+        }
+
+        .question-section label {
+            display: block;
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #0d6b3f;
+            margin-bottom: 18px;
+            letter-spacing: -0.3px;
+        }
+
+        .question-input {
+            width: 100%;
+            padding: 18px 24px;
+            font-size: 1.1em;
+            border: 2px solid #e0e0e0;
+            border-radius: 16px;
+            font-family: inherit;
+            direction: rtl;
+            resize: vertical;
+            min-height: 120px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #fafafa;
+            line-height: 1.6;
+        }
+
+        .question-input:focus {
+            outline: none;
+            border-color: #0f8a4f;
+            box-shadow: 0 0 0 4px rgba(15, 138, 79, 0.1), 0 4px 12px rgba(0, 0, 0, 0.05);
+            background: #ffffff;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.25em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0f8a4f 0%, #0d6b3f 100%);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 20px;
+            box-shadow: 0 4px 14px rgba(15, 138, 79, 0.3);
+            letter-spacing: 0.3px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(15, 138, 79, 0.4);
+            background: linear-gradient(135deg, #11a85f 0%, #0f8a4f 100%);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: 0 2px 8px rgba(15, 138, 79, 0.2);
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+            color: #0f8a4f;
+        }
+
+        .loading.active {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .spinner {
+            border: 4px solid #f0f0f0;
+            border-top: 4px solid #0f8a4f;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .answer-section {
+            margin-top: 35px;
+            display: none;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .answer-section.active {
+            display: block;
+        }
+
+        .answer-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-right: 5px solid #0f8a4f;
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .answer-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .answer-card h3 {
+            color: #0d6b3f;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .answer-card h3::before {
+            content: '✨';
+            font-size: 1.3em;
+        }
+
+        .answer-text {
+            font-size: 1.15em;
+            line-height: 2;
+            color: #2c3e50;
+            white-space: pre-wrap;
+            font-weight: 400;
+        }
+
+        .original-answer-section {
+            margin-top: 24px;
+        }
+
+        .reveal-btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.15em;
+            background: #ffffff;
+            color: #0f8a4f;
+            border: 2px solid #0f8a4f;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .reveal-btn:hover {
+            background: linear-gradient(135deg, #0f8a4f 0%, #0d6b3f 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(15, 138, 79, 0.3);
+        }
+
+        .original-answer {
+            display: none;
+            background: linear-gradient(135deg, #fff9e6 0%, #fffbf0 100%);
+            border: 2px solid #ffc107;
+            border-radius: 20px;
+            padding: 28px;
+            margin-top: 20px;
+            box-shadow: 0 4px 20px rgba(255, 193, 7, 0.15);
+            animation: slideDown 0.4s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .original-answer.active {
+            display: block;
+        }
+
+        .original-answer h4 {
+            color: #856404;
+            margin-bottom: 16px;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        .original-answer-text {
+            font-size: 1.05em;
+            line-height: 2;
+            color: #2c3e50;
+            white-space: pre-wrap;
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            color: #721c24;
+            padding: 18px 24px;
+            border-radius: 16px;
+            margin-top: 24px;
+            border-right: 5px solid #dc3545;
+            display: none;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.15);
+            animation: shake 0.5s ease-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .error-message.active {
+            display: block;
+        }
+
+        .source-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #e8e8e8;
+            font-size: 0.95em;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .source-info a {
+            color: #0f8a4f;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .source-info a:hover {
+            color: #0d6b3f;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 35px 25px;
+            }
+
+            .header h1 {
+                font-size: 2.2em;
+            }
+
+            .header .subtitle {
+                font-size: 1em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .question-input {
+                font-size: 1em;
+                padding: 15px 18px;
+            }
+
+            .submit-btn {
+                font-size: 1.1em;
+                padding: 16px;
+            }
+
+            .answer-card {
+                padding: 24px;
+            }
+
+            .answer-card h3 {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Efteely أفتيلي</h1>
+            <p class="subtitle">الإجابة على الأسئلة الشرعية باستخدام الذكاء الاصطناعي</p>
+        </div>
+
+        <div class="content">
+            <div class="question-section">
+                <label for="question">أدخل سؤالك الشرعي:</label>
+                <textarea 
+                    id="question" 
+                    class="question-input" 
+                    placeholder="اكتب سؤالك هنا..."
+                    rows="4"
+                ></textarea>
+                <button id="submitBtn" class="submit-btn">إرسال السؤال</button>
+            </div>
+
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>جاري معالجة السؤال...</p>
+            </div>
+
+            <div id="errorMessage" class="error-message"></div>
+
+            <div id="answerSection" class="answer-section">
+                <div class="answer-card">
+                    <h3>الإجابة المولدة</h3>
+                    <div id="aiAnswer" class="answer-text"></div>
+                    <div id="sourceInfo" class="source-info"></div>
+                </div>
+
+                <div class="original-answer-section">
+                    <button id="revealBtn" class="reveal-btn">إظهار الإجابة الأصلية</button>
+                    <div id="originalAnswer" class="original-answer">
+                        <h4>الإجابة الأصلية من المصدر:</h4>
+                        <div id="originalAnswerText" class="original-answer-text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questionInput = document.getElementById('question');
+        const submitBtn = document.getElementById('submitBtn');
+        const loading = document.getElementById('loading');
+        const answerSection = document.getElementById('answerSection');
+        const aiAnswer = document.getElementById('aiAnswer');
+        const originalAnswer = document.getElementById('originalAnswer');
+        const originalAnswerText = document.getElementById('originalAnswerText');
+        const revealBtn = document.getElementById('revealBtn');
+        const errorMessage = document.getElementById('errorMessage');
+        const sourceInfo = document.getElementById('sourceInfo');
+
+        submitBtn.addEventListener('click', async () => {
+            const question = questionInput.value.trim();
+            
+            if (!question) {
+                showError('يرجى إدخال سؤال');
+                return;
+            }
+
+            // Reset UI
+            hideError();
+            answerSection.classList.remove('active');
+            originalAnswer.classList.remove('active');
+            loading.classList.add('active');
+            submitBtn.disabled = true;
+            revealBtn.textContent = 'إظهار الإجابة الأصلية';
+
+            try {
+                const response = await fetch('/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ question: question })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'حدث خطأ أثناء معالجة السؤال');
+                }
+
+                // Display AI answer
+                aiAnswer.textContent = data.ai_answer;
+                
+                // Store original answer
+                originalAnswerText.textContent = data.original_answer;
+
+                // Display source info if available
+                if (data.source_url) {
+                    sourceInfo.innerHTML = `
+                        <strong>المصدر:</strong> 
+                        <a href="${data.source_url}" target="_blank">${data.source_url}</a>
+                        ${data.confidence ? ` | <strong>مستوى الثقة:</strong> ${(data.confidence * 100).toFixed(1)}%` : ''}
+                    `;
+                }
+
+                // Show answer section
+                answerSection.classList.add('active');
+                
+            } catch (error) {
+                showError(error.message);
+            } finally {
+                loading.classList.remove('active');
+                submitBtn.disabled = false;
+            }
+        });
+
+        revealBtn.addEventListener('click', () => {
+            if (originalAnswer.classList.contains('active')) {
+                originalAnswer.classList.remove('active');
+                revealBtn.textContent = 'إظهار الإجابة الأصلية';
+            } else {
+                originalAnswer.classList.add('active');
+                revealBtn.textContent = 'إخفاء الإجابة الأصلية';
+            }
+        });
+
+        // Allow Enter key to submit (Ctrl+Enter)
+        questionInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                submitBtn.click();
+            }
+        });
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.classList.add('active');
+        }
+
+        function hideError() {
+            errorMessage.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
+
