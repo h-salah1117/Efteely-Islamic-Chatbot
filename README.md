@@ -43,3 +43,13 @@ pip install -r requirements.txt
 Run App:
 
 python app.py
+
+## 📊 Dataset & Models
+Due to GitHub's file size limits, the dataset and pre-computed embeddings are hosted on Kaggle. 
+
+**Download the required files here:**
+👉 [Islamic Fatwa Q&A Dataset on Kaggle](https://www.kaggle.com/datasets/hazemmosalah/50k-islamic-fatwa-q-and-a-dataset-arabic)
+
+**Instructions:**
+1. Download `collected.csv` and place it in the `/data` folder.
+2. Download `embeddings.pt` and place it in the `/models` folder.
